@@ -1,5 +1,7 @@
 package PerlX::Let;
 
+# ABSTRACT: Syntactic sugar for lexical constants
+
 use v5.12;
 
 use strict;
@@ -8,6 +10,8 @@ use warnings;
 use Const::Fast ();
 use Keyword::Simple;
 use Text::Balanced ();
+
+our $VERSION = 'v0.0.1';
 
 =head1 SYNOPSIS
 

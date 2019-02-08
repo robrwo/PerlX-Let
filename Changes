@@ -2,7 +2,7 @@ Revision history for {{$dist->name}}:
 
 {{$NEXT}}
   [Documentation]
-  - Fixed typo in sample code.
+  - Fixed typos in POD.
 
 v0.0.1    2019-02-08 17:47:43+00:00 Europe/London
 - First release

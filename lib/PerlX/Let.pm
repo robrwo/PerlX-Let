@@ -41,7 +41,7 @@ is shorthand for
 =cut
 
 sub import {
-    # create keyword 'provided', expand it to 'if' at parse time
+
     Keyword::Simple::define 'let', sub {
         my ($ref) = @_;
 

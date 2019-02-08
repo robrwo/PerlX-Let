@@ -37,7 +37,7 @@ is shorthand for
 
   {
      use Const::Fast;
-     const $var => "thing";
+     const my $var => "thing";
 
      ...
   }

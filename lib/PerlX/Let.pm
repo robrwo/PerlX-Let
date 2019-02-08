@@ -41,41 +41,41 @@ is shorthand for
 =cut
 
 sub import {
-
-    Keyword::Simple::define 'let', sub {
-        my ($ref) = @_;
-
-        my ( $name, $val, $code );
-
-        ( $name, $$ref ) = Text::Balanced::extract_variable($$ref);
-        $$ref =~ s/^\s*\=>?\s*// or die;
-        ( $val, $$ref ) = Text::Balanced::extract_quotelike($$ref);
-        ( $val, $$ref ) = Text::Balanced::extract_bracketed($$ref)
-            unless defined $val;
-
-        unless (defined $val) {
-            ( $val ) = $$ref =~ /^(\S+)/ ;
-            $$ref =~ s/^\S+//;
-        }
-
-        ( $code, $$ref ) = Text::Balanced::extract_codeblock( $$ref, '{' );
-
-        my $let = "Const::Fast::const $name => $val;";
-
-        if ($code) {
-            substr( $code, index( $code, '{' ) + 1, 0 ) = $let;
-            substr( $$ref, 0, 0 ) = $code;
-        }
-        else {
-            substr( $$ref, 0, 0 ) = $let;
-        }
-
-    };
+    Keyword::Simple::define 'let', \&_rewrite_let;
 }
 
 sub unimport {
     Keyword::Simple::undefine 'let';
 }
 
+sub _rewrite_let {
+    my ($ref) = @_;
+
+    my ( $name, $val, $code );
+
+    ( $name, $$ref ) = Text::Balanced::extract_variable($$ref);
+    $$ref =~ s/^\s*\=>?\s*// or die;
+    ( $val, $$ref ) = Text::Balanced::extract_quotelike($$ref);
+    ( $val, $$ref ) = Text::Balanced::extract_bracketed($$ref)
+      unless defined $val;
+
+    unless ( defined $val ) {
+        ($val) = $$ref =~ /^(\S+)/;
+        $$ref =~ s/^\S+//;
+    }
+
+    ( $code, $$ref ) = Text::Balanced::extract_codeblock( $$ref, '{' );
+
+    my $let = "Const::Fast::const $name => $val;";
+
+    if ($code) {
+        substr( $code, index( $code, '{' ) + 1, 0 ) = $let;
+        substr( $$ref, 0, 0 ) = $code;
+    }
+    else {
+        substr( $$ref, 0, 0 ) = $let;
+    }
+
+}
 
 1;

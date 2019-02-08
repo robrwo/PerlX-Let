@@ -66,7 +66,7 @@ sub _rewrite_let {
 
     ( $code, $$ref ) = Text::Balanced::extract_codeblock( $$ref, '{' );
 
-    my $let = "Const::Fast::const $name => $val;";
+    my $let = "Const::Fast::const my $name => $val;";
 
     if ($code) {
         substr( $code, index( $code, '{' ) + 1, 0 ) = $let;

@@ -4,7 +4,7 @@ PerlX::Let - Syntactic sugar for lexical constants
 
 # VERSION
 
-version v0.0.1
+version v0.0.2
 
 # SYNOPSIS
 
@@ -35,7 +35,7 @@ is shorthand for
 ```perl
 {
    use Const::Fast;
-   const $var => "thing";
+   const my $var => "thing";
 
    ...
 }

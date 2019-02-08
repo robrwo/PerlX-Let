@@ -41,6 +41,17 @@ is shorthand for
 }
 ```
 
+# KNOWN ISSUES
+
+This is an experimental version.
+
+The parsing of assignments is rudimentaly, and may fail when assigning
+to another variable or the result of a function.
+
+# SEE ALSO
+
+[Keyword::Simple](https://metacpan.org/pod/Keyword::Simple)
+
 # AUTHOR
 
 Robert Rothenberg <rrwo@cpan.org>

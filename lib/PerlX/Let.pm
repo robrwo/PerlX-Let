@@ -9,6 +9,37 @@ use Const::Fast ();
 use Keyword::Simple;
 use Text::Balanced ();
 
+=head1 SYNOPSIS
+
+  use PerlX::Let;
+
+  let $val = "key" {
+
+    if ( $a->($val} > $b->{$val} ) {
+
+      something( $val );
+
+    }
+
+  }
+
+=head1 DESCRIPTION
+
+The code
+
+  let $var = "thing" { ... }
+
+is shorthand for
+
+  {
+     use Const::Fast;
+     const $var => "thing";
+
+     ...
+  }
+
+=cut
+
 sub import {
     # create keyword 'provided', expand it to 'if' at parse time
     Keyword::Simple::define 'let', sub {

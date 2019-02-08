@@ -52,8 +52,12 @@ sub import {
         ( $val, $$ref ) = Text::Balanced::extract_quotelike($$ref);
         ( $val, $$ref ) = Text::Balanced::extract_bracketed($$ref)
             unless defined $val;
-        ( $val, $$ref ) = $$ref =~ /(\S+)(.*)/
-            unless defined $val;
+
+        unless (defined $val) {
+            ( $val ) = $$ref =~ /^(\S+)/ ;
+            $$ref =~ s/^\S+//;
+        }
+
         ( $code, $$ref ) = Text::Balanced::extract_codeblock( $$ref, '{' );
 
         my $let = "Const::Fast::const $name => $val;";

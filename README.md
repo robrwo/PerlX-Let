@@ -45,7 +45,7 @@ is shorthand for
 
 This is an experimental version.
 
-The parsing of assignments is rudimentaly, and may fail when assigning
+The parsing of assignments is rudimentary, and may fail when assigning
 to another variable or the result of a function.
 
 # SEE ALSO

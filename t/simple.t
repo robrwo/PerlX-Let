@@ -20,4 +20,10 @@ let $x = 1 {
 
 };
 
+for (1..3) {
+    let $x = 'string' {
+        is $x => 'string', 'in loop';
+    }
+}
+
 done_testing;

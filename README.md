@@ -11,13 +11,13 @@ version v0.1.0
 ```perl
 use PerlX::Let;
 
-let $val = "key" {
+let $x = 1,
+    $y = "string" {
 
-  if ( $a->($val} > $b->{$val} ) {
-
-    something( $val );
-
-  }
+    if ( ($a->($y} - $x) > ($b->{$y} + $x) )
+    {
+      something( $y, $x );
+    }
 
 }
 ```

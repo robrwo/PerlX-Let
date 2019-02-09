@@ -23,6 +23,8 @@ let $x = 1 {
 for (1..3) {
     let $x = 'string' {
         is $x => 'string', 'in loop';
+        dies_ok { $x .= 'y' } 'read-only';
+
     }
 }
 
@@ -34,6 +36,10 @@ let @x = (1,2),
         is $y{a} => $x[0], 'multiple symbols';
         is $y{b} => $x[1];
         is $x[0] + $x[1] => $z;
+
+        dies_ok { $y{a}+= 1 } 'read-only';
+        dies_ok { $x[0]+= 1 } 'read-only';
+        dies_ok { $z++ } 'read-only';
 
 };
 

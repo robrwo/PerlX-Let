@@ -1,6 +1,12 @@
 Revision history for {{$dist->name}}:
 
 {{$NEXT}}
+  [Enhancements]
+  - Allow multiple values to be specified in a single block.
+
+  [Bug Fixes]
+  - Allow fat commas in brackets.
+
   [Documentation]
   - Fixed typos in POD.
 

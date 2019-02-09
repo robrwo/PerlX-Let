@@ -17,13 +17,13 @@ our $VERSION = 'v0.0.2';
 
   use PerlX::Let;
 
-  let $val = "key" {
+  let $x = 1,
+      $y = "string" {
 
-    if ( $a->($val} > $b->{$val} ) {
-
-      something( $val );
-
-    }
+      if ( ($a->($y} - $x) > ($b->{$y} + $x) )
+      {
+        something( $y, $x );
+      }
 
   }
 
@@ -55,22 +55,30 @@ sub unimport {
 sub _rewrite_let {
     my ($ref) = @_;
 
-    my ( $name, $val, $code );
+    my $let = "";
 
-    ( $name, $$ref ) = Text::Balanced::extract_variable($$ref);
-    $$ref =~ s/^\s*\=>?\s*// or die;
-    ( $val, $$ref ) = Text::Balanced::extract_quotelike($$ref);
-    ( $val, $$ref ) = Text::Balanced::extract_bracketed($$ref)
-      unless defined $val;
+    do {
 
-    unless ( defined $val ) {
-        ($val) = $$ref =~ /^(\S+)/;
-        $$ref =~ s/^\S+//;
-    }
+        my ( $name, $val );
+
+        ( $name, $$ref ) = Text::Balanced::extract_variable($$ref);
+        $$ref =~ s/^\s*\=>?\s*// or die;
+        ( $val, $$ref ) = Text::Balanced::extract_quotelike($$ref);
+        ( $val, $$ref ) = Text::Balanced::extract_bracketed( $$ref, '({[' )
+          unless defined $val;
+
+        unless ( defined $val ) {
+            ($val) = $$ref =~ /^(\S+)/;
+            $$ref =~ s/^\S+//;
+        }
+
+        $let .= "Const::Fast::const my $name => $val;\n";
+
+    } while ( $$ref =~ s/^\s*,\s*// );
+
+    my $code;
 
     ( $code, $$ref ) = Text::Balanced::extract_codeblock( $$ref, '{' );
-
-    my $let = "Const::Fast::const my $name => $val;";
 
     if ($code) {
         substr( $code, index( $code, '{' ) + 1, 0 ) = $let;

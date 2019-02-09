@@ -26,4 +26,15 @@ for (1..3) {
     }
 }
 
+
+let @x = (1,2),
+    %y = ( a => 1, b => 2),
+    $z = 3 {
+
+        is $y{a} => $x[0], 'multiple symbols';
+        is $y{b} => $x[1];
+        is $x[0] + $x[1] => $z;
+
+};
+
 done_testing;

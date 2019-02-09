@@ -24,22 +24,44 @@ let $x = 1,
 
 # DESCRIPTION
 
-The code
-
-```
-let $var = "thing" { ... }
-```
-
-is shorthand for
+This module allows you to define lexical constants using a new `let`
+keyword, for example, code such as
 
 ```perl
-{
-   use Const::Fast;
-   const my $var => "thing";
-
-   ...
+if (defined $arg{username}) {
+  $row->update( { username => $arg{username} );
 }
 ```
+
+is liable to typos. You could simplify it with
+
+```perl
+let $key = "username" {
+
+  if (defined $arg{$key}) {
+    $row->update( { $key => $arg{$key} );
+  }
+
+}
+```
+
+This is roughly equivalent to using
+
+```perl
+use Const::Fast;
+
+{
+ const $key => "username";
+
+  if (defined $arg{$key}) {
+    $row->update( { $key => $arg{$key} );
+  }
+
+}
+```
+
+However, if the variable is a scalar, or you are using Perl v5.28 or
+later, this uses state variables so that the value is only set once.
 
 # KNOWN ISSUES
 

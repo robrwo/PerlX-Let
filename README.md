@@ -50,6 +50,8 @@ to another variable or the result of a function.
 
 # SEE ALSO
 
+[Const::Fast](https://metacpan.org/pod/Const::Fast)
+
 [Keyword::Simple](https://metacpan.org/pod/Keyword::Simple)
 
 # AUTHOR

@@ -99,6 +99,8 @@ to another variable or the result of a function.
 
 =head1 SEE ALSO
 
+L<Const::Fast>
+
 L<Keyword::Simple>
 
 =cut

@@ -1,6 +1,9 @@
 Revision history for {{$dist->name}}:
 
 {{$NEXT}}
+  [Enhancements]
+  - Use state variables (only for scalars if Perl version < 5.28).
+
   [Documentation]
   - Added Const::Fast to SEE ALSO.
 

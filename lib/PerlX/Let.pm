@@ -72,7 +72,24 @@ sub _rewrite_let {
             $$ref =~ s/^\S+//;
         }
 
-        $let .= "Const::Fast::const my $name => $val;\n";
+        if ($] >= 5.028 || substr($name, 0, 1) eq '$') {
+
+            # We can't use Const::Fast on state variables, so we use
+            # this workaround.
+
+            $let .= << "HERE"
+use feature 'state';
+state $name = $val;
+unless (state \$set = 0) { Const::Fast::_make_readonly($name); \$set = 1; };
+HERE
+
+        }
+        else {
+
+            $let .= "Const::Fast::const my $name => $val;\n";
+        }
+
+
 
     } while ( $$ref =~ s/^\s*,\s*// );
 

@@ -4,7 +4,7 @@ PerlX::Let - Syntactic sugar for lexical constants
 
 # VERSION
 
-version v0.1.1
+version v0.2.0
 
 # SYNOPSIS
 

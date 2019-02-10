@@ -4,7 +4,7 @@ PerlX::Let - Syntactic sugar for lexical constants
 
 # VERSION
 
-version v0.2.0
+version v0.2.1
 
 # SYNOPSIS
 
@@ -60,15 +60,17 @@ use Const::Fast;
 }
 ```
 
-However, if the variable is a scalar, or you are using Perl v5.28 or
-later, this uses state variables so that the value is only set once.
+However, if the value does not contain a sigil, and the variable is a
+scalar, or you are using Perl v5.28 or later, this uses state
+variables so that the value is only set once.
 
 # KNOWN ISSUES
 
-This is an experimental version.
-
 The parsing of assignments is rudimentary, and may fail when assigning
 to another variable or the result of a function.
+
+Because this modifies the source code during compilation, the line
+numebrs may be changed.
 
 # SEE ALSO
 

@@ -63,6 +63,13 @@ However, if the value does not contain a sigil, and the variable is a
 scalar, or you are using Perl v5.28 or later, this uses state
 variables so that the value is only set once.
 
+If the code block is omitted, then this can be used to declare a
+state constant in the current scope, e.g.
+
+  let $x = "foo";
+
+  say $x;
+
 =cut
 
 sub import {

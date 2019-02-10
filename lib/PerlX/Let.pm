@@ -125,10 +125,11 @@ sub _rewrite_let {
 
 =head1 KNOWN ISSUES
 
-This is an experimental version.
-
 The parsing of assignments is rudimentary, and may fail when assigning
 to another variable or the result of a function.
+
+Because this modifies the source code during compilation, the line
+numebrs may be changed.
 
 =head1 SEE ALSO
 

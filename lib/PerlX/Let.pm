@@ -97,16 +97,12 @@ sub _rewrite_let {
             # We can't use Const::Fast on state variables, so we use
             # this workaround.
 
-            $let .= << "HERE"
-use feature 'state';
-state $name = $val;
-unless (state \$set = 0) { Const::Fast::_make_readonly($name); \$set = 1; };
-HERE
+            $let .= "use feature 'state'; state $name = $val; unless (state \$set = 0) { Const::Fast::_make_readonly($name); \$set = 1; };";
 
         }
         else {
 
-            $let .= "Const::Fast::const my $name => $val;\n";
+            $let .= "Const::Fast::const my $name => $val; ";
         }
 
 

@@ -1,6 +1,9 @@
 Revision history for {{$dist->name}}:
 
 {{$NEXT}}
+  [Bug Fixes]
+  - Removed newlines from source rewriting so that line numbers are not
+    changed.
 
 v0.2.0    2019-02-09 18:43:47+00:00 Europe/London
   [Enhancements]

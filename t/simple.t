@@ -43,4 +43,15 @@ let @x = (1,2),
 
 };
 
+foreach my $i (2..3) {
+
+    my $obj = { this => { that => $i } };
+    let $x = $obj->{this}{that} {
+
+        is $x => $i, 'assigned to expression';
+
+    }
+
+}
+
 done_testing;

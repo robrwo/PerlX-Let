@@ -59,8 +59,9 @@ This is roughly equivalent to using
 
   }
 
-However, if the variable is a scalar, or you are using Perl v5.28 or
-later, this uses state variables so that the value is only set once.
+However, if the value does not contain a sigil, and the variable is a
+scalar, or you are using Perl v5.28 or later, this uses state
+variables so that the value is only set once.
 
 =cut
 
@@ -92,7 +93,7 @@ sub _rewrite_let {
             $$ref =~ s/^\S+//;
         }
 
-        if ($] >= 5.028 || substr($name, 0, 1) eq '$') {
+        if ($val !~ /[\$\@\%\&]/ && ($] >= 5.028 || substr($name, 0, 1) eq '$')) {
 
             # We can't use Const::Fast on state variables, so we use
             # this workaround.
@@ -104,8 +105,6 @@ sub _rewrite_let {
 
             $let .= "Const::Fast::const my $name => $val; ";
         }
-
-
 
     } while ( $$ref =~ s/^\s*,\s*// );
 

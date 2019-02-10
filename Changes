@@ -7,6 +7,8 @@ Revision history for {{$dist->name}}:
 
   - Fixed bug with setting hashes to read-only on Perl 5.28 or later.
 
+  - Do not use state variable when the value contains a sigil.
+
   [Documentation]
   - Added a note about changed line numbers in the KNOWN ISSUES.
 

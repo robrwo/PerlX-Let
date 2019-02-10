@@ -5,6 +5,8 @@ Revision history for {{$dist->name}}:
   - Removed newlines from source rewriting so that line numbers are not
     changed.
 
+  - Fixed bug with setting hashes to read-only on Perl 5.28 or later.
+
 v0.2.0    2019-02-09 18:43:47+00:00 Europe/London
   [Enhancements]
   - Use state variables (only for scalars if Perl version < 5.28).

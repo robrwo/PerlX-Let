@@ -105,7 +105,7 @@ sub _rewrite_let {
             # We can't use Const::Fast on state variables, so we use
             # this workaround.
 
-            $let .= "use feature 'state'; state $name = $val; unless (state \$set = 0) { Const::Fast::_make_readonly(\\$name); \$set = 1; };";
+            $let .= "use feature 'state'; state $name = $val; unless (state \$__perlx_let_state_is_set = 0) { Const::Fast::_make_readonly(\\$name); \$__perlx_let_state_is_set = 1; };";
 
         }
         else {

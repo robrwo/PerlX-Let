@@ -1,6 +1,9 @@
 Revision history for {{$dist->name}}:
 
 {{$NEXT}}
+  [Bug Fixes]
+  - Renamed internal variable to avoid potential scope conflicts.
+
   [Documentation]
   - Add note that the code block can be omitted.
 

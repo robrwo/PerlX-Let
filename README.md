@@ -51,7 +51,7 @@ This is roughly equivalent to using
 use Const::Fast;
 
 {
- const $key => "username";
+  const $key => "username";
 
   if (defined $arg{$key}) {
     $row->update( { $key => $arg{$key} );

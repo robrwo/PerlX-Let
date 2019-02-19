@@ -1,6 +1,8 @@
 Revision history for {{$dist->name}}:
 
 {{$NEXT}}
+  [Toolchain]
+  - Added test diagnostics for upstream prerequisites.
 
 v0.2.5    2019-02-19 15:18:37+00:00 Europe/London
   [Bug Fixes]

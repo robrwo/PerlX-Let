@@ -8,7 +8,7 @@ use strict;
 use warnings;
 
 use Const::Fast ();
-use Keyword::Simple;
+use Keyword::Simple 0.04;
 use Text::Balanced ();
 
 our $VERSION = 'v0.2.5';

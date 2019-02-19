@@ -1,6 +1,10 @@
 Revision history for {{$dist->name}}:
 
 {{$NEXT}}
+  [Bug Fixes]
+  - Increased minimum version of Keyword::Simple to fix issue with
+    string evals.
+
   [Documentation]
   - Fix typo in Changes.
 

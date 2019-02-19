@@ -54,4 +54,10 @@ foreach my $i (2..3) {
 
 }
 
+
+eval 'let $x';
+like $@, qr/An assignment is required for let/, 'syntax error';
+
+no PerlX::Let;
+
 done_testing;

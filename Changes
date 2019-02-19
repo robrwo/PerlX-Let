@@ -7,6 +7,9 @@ Revision history for {{$dist->name}}:
   [Documentation]
   - Adjusted alignment of code examples.
 
+  [Tests]
+  - Improved test coverage.
+
 v0.2.3    2019-02-14 11:47:15+00:00 Europe/London
   [Documentation]
   - Fixed typos.

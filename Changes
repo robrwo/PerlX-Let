@@ -1,6 +1,9 @@
 Revision history for {{$dist->name}}:
 
 {{$NEXT}}
+  [Bug Fixes]
+  - Return an error message for syntax errors.
+
   [Documentation]
   - Adjusted alignment of code examples.
 

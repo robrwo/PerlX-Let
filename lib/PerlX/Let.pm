@@ -90,7 +90,7 @@ sub _rewrite_let {
         my ( $name, $val );
 
         ( $name, $$ref ) = Text::Balanced::extract_variable($$ref);
-        $$ref =~ s/^\s*\=>?\s*// or die;
+        $$ref =~ s/^\s*\=>?\s*// or die "An assignment is required for let";
         ( $val, $$ref ) = Text::Balanced::extract_quotelike($$ref);
         ( $val, $$ref ) = Text::Balanced::extract_bracketed( $$ref, '({[' )
           unless defined $val;

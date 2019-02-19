@@ -90,6 +90,7 @@ sub _rewrite_let {
         my ( $name, $val );
 
         ( $name, $$ref ) = Text::Balanced::extract_variable($$ref);
+        die "A variable name is required for let" unless defined $name;
         $$ref =~ s/^\s*\=>?\s*// or die "An assignment is required for let";
         ( $val, $$ref ) = Text::Balanced::extract_quotelike($$ref);
         ( $val, $$ref ) = Text::Balanced::extract_bracketed( $$ref, '({[' )
@@ -99,6 +100,8 @@ sub _rewrite_let {
             ($val) = $$ref =~ /^(\S+)/;
             $$ref =~ s/^\S+//;
         }
+
+        die "A value is required for let" unless defined $val;
 
         if ($val !~ /[\$\@\%\&]/ && ($] >= 5.028 || substr($name, 0, 1) eq '$')) {
 

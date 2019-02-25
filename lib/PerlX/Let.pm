@@ -1,6 +1,6 @@
 package PerlX::Let;
 
-# ABSTRACT: Syntactic sugar for lexical constants
+# ABSTRACT: Syntactic sugar for lexical state constants
 
 use v5.12;
 

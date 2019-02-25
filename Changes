@@ -1,6 +1,9 @@
 Revision history for {{$dist->name}}:
 
 {{$NEXT}}
+  [Documentation]
+  - Updated abstract to make use of state constants explicit.
+
   [Toolchain]
   - Added test diagnostics for upstream prerequisites.
 

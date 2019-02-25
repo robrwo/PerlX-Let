@@ -1,6 +1,6 @@
 # NAME
 
-PerlX::Let - Syntactic sugar for lexical constants
+PerlX::Let - Syntactic sugar for lexical state constants
 
 # VERSION
 

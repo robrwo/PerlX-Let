@@ -4,6 +4,9 @@ Revision history for {{$dist->name}}:
   [Documentation]
   - Updated abstract to make use of state constants explicit.
 
+  - Updated documentation to discuss issues with using state
+    variables, #3.
+
   [Toolchain]
   - Added test diagnostics for upstream prerequisites.
 

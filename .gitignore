@@ -1,2 +1,4 @@
 PerlX-Let-*.tar.gz
 PerlX-Let-*/
+.build/
+cpanfile.snapshot

@@ -5,6 +5,8 @@ requires "Const::Fast" => "0";
 requires "Keyword::Simple" => "0.04";
 requires "Text::Balanced" => "0";
 requires "perl" => "v5.12.0";
+requires "strict" => "0";
+requires "warnings" => "0";
 
 on 'test' => sub {
   requires "File::Spec" => "0";

@@ -1,6 +1,8 @@
 Revision history for {{$dist->name}}:
 
 {{$NEXT}}
+  [Documentation]
+  - Fixed typo in POD.
 
 v0.2.7    2020-07-31 15:06:15+01:00 Europe/London
   [Documentation]

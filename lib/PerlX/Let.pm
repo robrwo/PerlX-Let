@@ -68,7 +68,6 @@ This is roughly equivalent to using
 
 However, if the value contains a sigil, or (for versions of Perl
 before 5.28) the value is not a scalar, then this uses a my variable
-variable
 
   use Const::Fast ();
 

@@ -4,6 +4,9 @@ Revision history for {{$dist->name}}:
   [Documentation]
   - Fixed typo in POD.
 
+  [Tests]
+  - Added tests for recommended syntax.
+
 v0.2.7    2020-07-31 15:06:15+01:00 Europe/London
   [Documentation]
   - Updated copyright year.

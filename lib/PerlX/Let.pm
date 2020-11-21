@@ -17,8 +17,10 @@ our $VERSION = 'v0.2.8';
 
   use PerlX::Let;
 
-  let $x = 1,
-      $y = "string" {
+  {
+
+      let $x = 1;
+      let $y = "string";
 
       if ( ($a->($y} - $x) > ($b->{$y} + $x) )
       {
@@ -38,7 +40,8 @@ keyword, for example, code such as
 
 is liable to typos. You could simplify it with
 
-  let $key = "username" {
+  {
+      let $key = "username";
 
       if (defined $arg{$key}) {
           $row->update( { $key => $arg{$key} );
@@ -84,14 +87,22 @@ variable as read-only, particularly for deeper data structures.
 However, the tradeoff for using this is that the variables remain
 allocated until the process exits.
 
-If the code block is omitted, then this can be used to declare a
-state constant in the current scope, e.g.
+=head1 DEPRECATED SYNTAX
 
-  let $x = "foo";
+Adding a code block after the let assignment is deprecated:
 
-  say $x;
+  let $x = "foo" {
+    ...
+  }
 
-Note that this may enable the state L<feature> in the current scope.
+Instead, put the assignment inside of the block.
+
+Specifying multiple assignments is also deprecated:
+
+  let $x = "foo",
+      $y = "bar";
+
+Instead, use multiple let statements.
 
 =cut
 
@@ -156,6 +167,9 @@ sub _rewrite_let {
 }
 
 =head1 KNOWN ISSUES
+
+A let assignment will enable the state feature inside of the current
+context.
 
 The parsing of assignments is rudimentary, and may fail when assigning
 to another variable or the result of a function.  Because of this,

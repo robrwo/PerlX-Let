@@ -4,6 +4,9 @@ Revision history for {{$dist->name}}:
   [Documentation]
   - Fixed typo in POD.
 
+  - Changed the coding style of most examples, and noted that "prefix"
+    assignments and multiple assignments are deprecated.
+
   [Tests]
   - Added tests for recommended syntax.
 

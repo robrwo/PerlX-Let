@@ -1,6 +1,11 @@
 Revision history for {{$dist->name}}:
 
 {{$NEXT}}
+  [Incompatible Changes]
+  - The deprecated code prefix syntax `let $s = $expr { ... }` has been removed.
+
+  - The deprecated comma syntax `let $a = ..., $b = ...` has been removed.
+
   [Documentation]
   - Updated copyright year.
 

@@ -85,23 +85,6 @@ variable as read-only, particularly for deeper data structures.
 However, the tradeoff for using this is that the variables remain
 allocated until the process exits.
 
-=head1 DEPRECATED SYNTAX
-
-Adding a code block after the let assignment is deprecated:
-
-  let $x = "foo" {
-    ...
-  }
-
-Instead, put the assignment inside of the block.
-
-Specifying multiple assignments is also deprecated:
-
-  let $x = "foo",
-      $y = "bar";
-
-Instead, use multiple let statements.
-
 =cut
 
 sub import {
@@ -117,50 +100,35 @@ sub _rewrite_let {
 
     my $let = "";
 
-    do {
+    my ( $name, $val );
 
-        my ( $name, $val );
+    ( $name, $$ref ) = Text::Balanced::extract_variable($$ref);
+    die "A variable name is required for let" unless defined $name;
+    $$ref =~ s/^\s*\=>?\s*// or die "An assignment is required for let";
+    ( $val, $$ref ) = Text::Balanced::extract_quotelike($$ref);
+    ( $val, $$ref ) = Text::Balanced::extract_bracketed( $$ref, '({[' )
+        unless defined $val;
 
-        ( $name, $$ref ) = Text::Balanced::extract_variable($$ref);
-        die "A variable name is required for let" unless defined $name;
-        $$ref =~ s/^\s*\=>?\s*// or die "An assignment is required for let";
-        ( $val, $$ref ) = Text::Balanced::extract_quotelike($$ref);
-        ( $val, $$ref ) = Text::Balanced::extract_bracketed( $$ref, '({[' )
-          unless defined $val;
+    unless ( defined $val ) {
+        ($val) = $$ref =~ /^(\S+)/;
+        $$ref =~ s/^\S+//;
+    }
 
-        unless ( defined $val ) {
-            ($val) = $$ref =~ /^(\S+)/;
-            $$ref =~ s/^\S+//;
-        }
+    die "A value is required for let" unless defined $val;
 
-        die "A value is required for let" unless defined $val;
+    if ($val !~ /[\$\@\%\&]/ && ($] >= 5.028 || substr($name, 0, 1) eq '$')) {
 
-        if ($val !~ /[\$\@\%\&]/ && ($] >= 5.028 || substr($name, 0, 1) eq '$')) {
+        # We can't use Const::Fast on state variables, so we use this workaround.
 
-            # We can't use Const::Fast on state variables, so we use
-            # this workaround.
+        $let .= "use feature 'state'; state $name = $val; unless (state \$__perlx_let_state_is_set = 0) { Const::Fast::_make_readonly(\\$name); \$__perlx_let_state_is_set = 1; };";
 
-            $let .= "use feature 'state'; state $name = $val; unless (state \$__perlx_let_state_is_set = 0) { Const::Fast::_make_readonly(\\$name); \$__perlx_let_state_is_set = 1; };";
-
-        }
-        else {
-
-            $let .= "Const::Fast::const my $name => $val; ";
-        }
-
-    } while ( $$ref =~ s/^\s*,\s*// );
-
-    my $code;
-
-    ( $code, $$ref ) = Text::Balanced::extract_codeblock( $$ref, '{' );
-
-    if ($code) {
-        substr( $code, index( $code, '{' ) + 1, 0 ) = $let;
-        substr( $$ref, 0, 0 ) = $code;
     }
     else {
-        substr( $$ref, 0, 0 ) = $let;
+
+        $let .= "Const::Fast::const my $name => $val; ";
     }
+
+    substr( $$ref, 0, 0 ) = $let;
 
 }
 

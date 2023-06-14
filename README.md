@@ -90,27 +90,6 @@ variable as read-only, particularly for deeper data structures.
 However, the tradeoff for using this is that the variables remain
 allocated until the process exits.
 
-# DEPRECATED SYNTAX
-
-Adding a code block after the let assignment is deprecated:
-
-```
-let $x = "foo" {
-  ...
-}
-```
-
-Instead, put the assignment inside of the block.
-
-Specifying multiple assignments is also deprecated:
-
-```
-let $x = "foo",
-    $y = "bar";
-```
-
-Instead, use multiple let statements.
-
 # KNOWN ISSUES
 
 A let assignment will enable the state feature inside of the current

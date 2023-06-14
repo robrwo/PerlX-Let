@@ -3,8 +3,6 @@ package PerlX::Let;
 # ABSTRACT: Syntactic sugar for lexical state constants
 
 use v5.12;
-
-use strict;
 use warnings;
 
 use Const::Fast ();

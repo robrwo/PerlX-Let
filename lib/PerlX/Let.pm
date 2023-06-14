@@ -146,6 +146,12 @@ Because this modifies the source code during compilation, the line
 numbers may be changed, particularly if the let assignment(s) are on
 multiple lines.
 
+=head1 SUPPORT FOR OLDER PERL VERSIONS
+
+The this module requires Perl v5.12 or later.
+
+Future releases may only support Perl versions released in the last ten years.
+
 =head1 SEE ALSO
 
 L<feature>

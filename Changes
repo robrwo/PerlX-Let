@@ -7,6 +7,8 @@ Revision history for {{$dist->name}}:
   - The deprecated comma syntax `let $a = ..., $b = ...` has been removed.
 
   [Documentation]
+  - Documented the support policy for older Perls.
+
   - Updated copyright year.
 
   - Fix encoding of links in README.

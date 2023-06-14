@@ -104,6 +104,12 @@ Because this modifies the source code during compilation, the line
 numbers may be changed, particularly if the let assignment(s) are on
 multiple lines.
 
+# SUPPORT FOR OLDER PERL VERSIONS
+
+The this module requires Perl v5.12 or later.
+
+Future releases may only support Perl versions released in the last ten years.
+
 # SEE ALSO
 
 [feature](https://metacpan.org/pod/feature)

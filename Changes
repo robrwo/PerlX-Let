@@ -4,6 +4,8 @@ Revision history for {{$dist->name}}:
   [Documentation]
   - Updated copyright year.
 
+  - Fix encoding of links in README.
+
   [Other]
   - Removed redundant strictures.
 

@@ -129,9 +129,9 @@ multiple lines.
 
 [feature](https://metacpan.org/pod/feature)
 
-[Const::Fast](https://metacpan.org/pod/Const::Fast)
+[Const::Fast](https://metacpan.org/pod/Const%3A%3AFast)
 
-[Keyword::Simple](https://metacpan.org/pod/Keyword::Simple)
+[Keyword::Simple](https://metacpan.org/pod/Keyword%3A%3ASimple)
 
 # AUTHOR
 

@@ -10,6 +10,8 @@ Revision history for {{$dist->name}}:
   [Toolchain]
   - Sign distribution.
 
+  - Update MANIGFEST.SKIP rules.
+
 v0.2.8    2020-11-21 12:25:31+00:00 Europe/London
   [Documentation]
   - Fixed typo in POD.

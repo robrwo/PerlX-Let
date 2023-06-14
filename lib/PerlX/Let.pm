@@ -9,7 +9,7 @@ use Const::Fast ();
 use Keyword::Simple 0.04;
 use Text::Balanced ();
 
-our $VERSION = 'v0.2.9';
+our $VERSION = 'v0.3.0';
 
 =head1 SYNOPSIS
 
